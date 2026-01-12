@@ -1,0 +1,420 @@
+{
+  "summary": {
+    "total_words": 457,
+    "doubled_words": 46,
+    "doubled_percentage": 10.1,
+    "beat_vocal_segments": 280,
+    "most_doubled": [
+      [
+        "go.",
+        6
+      ],
+      [
+        "what",
+        5
+      ],
+      [
+        "let's",
+        5
+      ],
+      [
+        "go",
+        3
+      ],
+      [
+        "i",
+        2
+      ],
+      [
+        "give",
+        2
+      ],
+      [
+        "a",
+        2
+      ],
+      [
+        "did",
+        2
+      ],
+      [
+        "yeah,",
+        2
+      ],
+      [
+        "when",
+        2
+      ]
+    ]
+  },
+  "doubles": [
+    {
+      "word": "I",
+      "start": 3.0,
+      "end": 3.44,
+      "confidence": 0.784,
+      "is_clean": true,
+      "bleed": 0.016
+    },
+    {
+      "word": "me.",
+      "start": 4.9,
+      "end": 5.32,
+      "confidence": 0.708,
+      "is_clean": true,
+      "bleed": -0.351
+    },
+    {
+      "word": "give",
+      "start": 5.82,
+      "end": 5.96,
+      "confidence": 0.678,
+      "is_clean": true,
+      "bleed": -0.583
+    },
+    {
+      "word": "a",
+      "start": 5.96,
+      "end": 6.1,
+      "confidence": 0.65,
+      "is_clean": true,
+      "bleed": 0.24
+    },
+    {
+      "word": "who",
+      "start": 17.96,
+      "end": 18.08,
+      "confidence": 0.734,
+      "is_clean": true,
+      "bleed": 0.179
+    },
+    {
+      "word": "go.",
+      "start": 19.1,
+      "end": 19.26,
+      "confidence": 0.682,
+      "is_clean": false,
+      "bleed": 0.817
+    },
+    {
+      "word": "What",
+      "start": 22.18,
+      "end": 22.62,
+      "confidence": 0.833,
+      "is_clean": true,
+      "bleed": -0.694
+    },
+    {
+      "word": "What",
+      "start": 30.0,
+      "end": 30.26,
+      "confidence": 0.7,
+      "is_clean": true,
+      "bleed": -0.849
+    },
+    {
+      "word": "did",
+      "start": 30.26,
+      "end": 30.38,
+      "confidence": 0.716,
+      "is_clean": false,
+      "bleed": 0.878
+    },
+    {
+      "word": "Let's",
+      "start": 34.1,
+      "end": 34.46,
+      "confidence": 0.827,
+      "is_clean": true,
+      "bleed": -0.767
+    },
+    {
+      "word": "I'm",
+      "start": 36.28,
+      "end": 36.46,
+      "confidence": 0.685,
+      "is_clean": false,
+      "bleed": 0.514
+    },
+    {
+      "word": "whipping",
+      "start": 36.46,
+      "end": 36.64,
+      "confidence": 0.833,
+      "is_clean": true,
+      "bleed": -0.341
+    },
+    {
+      "word": "see",
+      "start": 37.3,
+      "end": 37.46,
+      "confidence": 0.733,
+      "is_clean": false,
+      "bleed": 0.721
+    },
+    {
+      "word": "Let's",
+      "start": 38.06,
+      "end": 38.3,
+      "confidence": 0.767,
+      "is_clean": true,
+      "bleed": -0.065
+    },
+    {
+      "word": "go.",
+      "start": 38.3,
+      "end": 38.5,
+      "confidence": 0.855,
+      "is_clean": false,
+      "bleed": 0.591
+    },
+    {
+      "word": "go.",
+      "start": 39.74,
+      "end": 39.94,
+      "confidence": 0.834,
+      "is_clean": true,
+      "bleed": -0.355
+    },
+    {
+      "word": "better",
+      "start": 40.66,
+      "end": 40.86,
+      "confidence": 0.819,
+      "is_clean": true,
+      "bleed": -0.412
+    },
+    {
+      "word": "brothers",
+      "start": 44.52,
+      "end": 44.78,
+      "confidence": 0.679,
+      "is_clean": true,
+      "bleed": 0.079
+    },
+    {
+      "word": "me",
+      "start": 49.14,
+      "end": 49.28,
+      "confidence": 0.771,
+      "is_clean": true,
+      "bleed": -0.439
+    },
+    {
+      "word": "he",
+      "start": 52.4,
+      "end": 52.5,
+      "confidence": 0.857,
+      "is_clean": false,
+      "bleed": 0.787
+    },
+    {
+      "word": "go.",
+      "start": 53.66,
+      "end": 53.84,
+      "confidence": 0.758,
+      "is_clean": true,
+      "bleed": -0.659
+    },
+    {
+      "word": "You",
+      "start": 55.14,
+      "end": 55.5,
+      "confidence": 0.985,
+      "is_clean": true,
+      "bleed": -0.708
+    },
+    {
+      "word": "at",
+      "start": 61.46,
+      "end": 61.6,
+      "confidence": 0.682,
+      "is_clean": false,
+      "bleed": 0.753
+    },
+    {
+      "word": "a",
+      "start": 62.08,
+      "end": 62.2,
+      "confidence": 0.758,
+      "is_clean": false,
+      "bleed": 0.531
+    },
+    {
+      "word": "next",
+      "start": 64.32,
+      "end": 64.58,
+      "confidence": 0.82,
+      "is_clean": true,
+      "bleed": -0.259
+    },
+    {
+      "word": "give",
+      "start": 67.26,
+      "end": 67.4,
+      "confidence": 0.767,
+      "is_clean": true,
+      "bleed": -0.703
+    },
+    {
+      "word": "What",
+      "start": 83.64,
+      "end": 84.04,
+      "confidence": 0.881,
+      "is_clean": true,
+      "bleed": -0.758
+    },
+    {
+      "word": "What",
+      "start": 86.68,
+      "end": 87.86,
+      "confidence": 0.851,
+      "is_clean": true,
+      "bleed": -0.2
+    },
+    {
+      "word": "What",
+      "start": 90.5,
+      "end": 91.68,
+      "confidence": 0.88,
+      "is_clean": true,
+      "bleed": -0.273
+    },
+    {
+      "word": "did",
+      "start": 93.62,
+      "end": 93.74,
+      "confidence": 0.732,
+      "is_clean": true,
+      "bleed": -0.039
+    },
+    {
+      "word": "Let's",
+      "start": 95.31,
+      "end": 95.9,
+      "confidence": 0.731,
+      "is_clean": true,
+      "bleed": -0.623
+    },
+    {
+      "word": "go.",
+      "start": 95.9,
+      "end": 96.08,
+      "confidence": 0.762,
+      "is_clean": false,
+      "bleed": 0.882
+    },
+    {
+      "word": "go.",
+      "start": 102.98,
+      "end": 103.14,
+      "confidence": 0.806,
+      "is_clean": true,
+      "bleed": -0.065
+    },
+    {
+      "word": "of",
+      "start": 113.54,
+      "end": 113.7,
+      "confidence": 0.739,
+      "is_clean": true,
+      "bleed": 0.374
+    },
+    {
+      "word": "They",
+      "start": 128.96,
+      "end": 129.1,
+      "confidence": 0.665,
+      "is_clean": true,
+      "bleed": 0.416
+    },
+    {
+      "word": "two",
+      "start": 133.6,
+      "end": 133.82,
+      "confidence": 0.795,
+      "is_clean": true,
+      "bleed": -0.167
+    },
+    {
+      "word": "go",
+      "start": 141.24,
+      "end": 141.42,
+      "confidence": 0.71,
+      "is_clean": false,
+      "bleed": 0.802
+    },
+    {
+      "word": "let's",
+      "start": 147.66,
+      "end": 148.38,
+      "confidence": 0.651,
+      "is_clean": true,
+      "bleed": 0.118
+    },
+    {
+      "word": "go",
+      "start": 148.86,
+      "end": 149.07,
+      "confidence": 0.692,
+      "is_clean": true,
+      "bleed": 0.22
+    },
+    {
+      "word": "yeah,",
+      "start": 151.14,
+      "end": 151.56,
+      "confidence": 0.803,
+      "is_clean": true,
+      "bleed": 0.321
+    },
+    {
+      "word": "Yeah,",
+      "start": 152.88,
+      "end": 153.3,
+      "confidence": 0.711,
+      "is_clean": true,
+      "bleed": -0.046
+    },
+    {
+      "word": "let's",
+      "start": 153.36,
+      "end": 154.0,
+      "confidence": 0.693,
+      "is_clean": true,
+      "bleed": -0.434
+    },
+    {
+      "word": "go",
+      "start": 154.94,
+      "end": 155.14,
+      "confidence": 0.845,
+      "is_clean": true,
+      "bleed": -0.062
+    },
+    {
+      "word": "when",
+      "start": 156.56,
+      "end": 157.92,
+      "confidence": 0.844,
+      "is_clean": true,
+      "bleed": 0.016
+    },
+    {
+      "word": "I",
+      "start": 162.7,
+      "end": 162.82,
+      "confidence": 0.75,
+      "is_clean": false,
+      "bleed": 0.717
+    },
+    {
+      "word": "When",
+      "start": 165.06,
+      "end": 165.5,
+      "confidence": 0.683,
+      "is_clean": true,
+      "bleed": -0.401
+    }
+  ]
+}

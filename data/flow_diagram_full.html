@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flow Diagram - Drake - drake_vocals_isolated</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0 30px 0;
+            border-bottom: 2px solid #4ECDC4;
+            margin-bottom: 30px;
+        }
+        h1 { 
+            color: #4ECDC4; 
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+        h2 { 
+            color: #888; 
+            font-weight: normal; 
+            margin: 5px 0 0 0;
+            font-size: 18px;
+        }
+        .stats { 
+            display: flex; 
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px; 
+            margin: 25px 0;
+        }
+        .stat {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .flow-container {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .section-header {
+            color: #4ECDC4;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 900px;
+        }
+        th {
+            background: #1a1a2e;
+            padding: 10px 4px;
+            text-align: center;
+            border-bottom: 2px solid #4ECDC4;
+            color: #4ECDC4;
+            font-size: 12px;
+            position: sticky;
+            top: 0;
+        }
+        td {
+            padding: 6px 3px;
+            text-align: center;
+            border-bottom: 1px solid #252540;
+            min-width: 45px;
+            font-size: 11px;
+            height: 32px;
+        }
+        tr:hover {
+            background: rgba(78, 205, 196, 0.05);
+        }
+        .bar-num {
+            background: #1a1a2e;
+            font-weight: bold;
+            color: #4ECDC4;
+            width: 50px;
+            position: sticky;
+            left: 0;
+        }
+        .beat-start {
+            border-left: 2px solid #3a3a5e;
+        }
+        .syllable {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 10px;
+            max-width: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .doubled {
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            border: 1px solid gold;
+        }
+        .rest { color: #2a2a4e; }
+        .legend {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+        .legend-title {
+            color: #4ECDC4;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+        }
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .legend-text {
+            font-size: 12px;
+            color: #ccc;
+        }
+        .legend-letter {
+            font-weight: bold;
+            color: #fff;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .metric-card {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+        .metric-title {
+            color: #4ECDC4;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #252540;
+        }
+        .metric-label { color: #888; }
+        .metric-value { color: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>RAP FLOW DIAGRAM</h1>
+        <h2>Drake - drake_vocals_isolated</h2>
+    </div>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value">123</div>
+            <div class="stat-label">BPM</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">194s</div>
+            <div class="stat-label">Duration</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">99</div>
+            <div class="stat-label">Bars</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">453</div>
+            <div class="stat-label">Syllables</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">28</div>
+            <div class="stat-label">Rhyme Groups</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">41</div>
+            <div class="stat-label">Doubled Words</div>
+        </div>
+    </div>
+
+    <div class="flow-container">
+        <div class="section-header">Bars 1-16</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">1</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">2</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">3</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">don't</span></td><td class=""><span class="syllable " style="color:#aaa">give</span></td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class=""><span class="syllable doubled" style="color:#aaa">fuck</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">if</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">4</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">you</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">love</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">don't</span></td><td class=""><span class="syllable " style="color:#aaa">give</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">5</td><td class="beat-start"><span class="syllable " style="color:#aaa">a</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">fuck</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">you</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">like</span></td></tr><tr><td class="bar-num">6</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">Asked</span></td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">how</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td></tr><tr><td class="bar-num">7</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">it</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">feel</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Can't</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">8</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">say</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">it</span></td><td class=""><span class="syllable " style="color:#aaa">didn'</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">surpr</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=""><span class="syllable " style="color:#aaa">Life'</span></td></tr><tr><td class="bar-num">9</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">time</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">look</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">10</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">at</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">11</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">12</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">my</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">right</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">13</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">14</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">You</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">15</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">16</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">nigga</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">will</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 17-32</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">17</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">stand</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">18</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">besid</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">19</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Hacki</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">some</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">peopl</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">20</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">love</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">Hang</span></td><td class="beat-start"><span class="syllable doubled" style="color:#aaa">aroun</span></td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">procy</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">21</td><td class="beat-start"><span class="syllable " style="color:#aaa">who</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">tried</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=""><span class="syllable " style="color:#aaa">did</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">miss</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">22</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td></tr><tr><td class="bar-num">23</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">miss</span></td><td class=""><span class="syllable doubled" style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">24</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I'm</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">25</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">whipp</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">him</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">don't</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">like</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">see</span></td></tr><tr><td class="bar-num">26</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">somet</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">like</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">this</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">27</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">28</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable doubled" style="color:#aaa">go</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">29</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">You</span></td><td class=""><span class="syllable " style="color:#aaa">nigga</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">just</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">bette</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">not</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">30</td><td class="beat-start"><span class="syllable " style="color:#aaa">ask</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">no</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">31</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">favor</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class="beat-start"><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">Let's</span></td></tr><tr><td class="bar-num">32</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">love</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">for</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">my</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">broth</span></td><td class="beat-start"><span class="syllable doubled" style="color:#aaa">and</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">get</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">to</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">a</span></td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 33-48</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">33</td><td class="beat-start"><span class="syllable " style="color:#aaa">trade</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">of</span></td><td class="beat-start"><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">let's</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">She</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">might</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">34</td><td class="beat-start"><span class="syllable " style="color:#aaa">decid</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">to</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">say</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">no</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">to</span></td><td class=""><span class="syllable " style="color:#aaa">me</span></td></tr><tr><td class="bar-num">35</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Now</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=""><span class="syllable " style="color:#aaa">say</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">it</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">36</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">to</span></td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">later</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">37</td><td class="beat-start"><span class="syllable " style="color:#aaa">go</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Passe</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">out</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">that</span></td><td class=""><span class="syllable " style="color:#aaa">he</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">38</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">liked</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Flori</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Get</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">39</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td><td class=""><span class="syllable " style="color:#aaa">You</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">40</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">switc</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">on</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">41</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">the</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">42</td><td class="beat-start"><span class="syllable " style="color:#aaa">guys</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">43</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">44</td><td class="beat-start"><span class="syllable " style="color:#aaa">and</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">suppo</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">45</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">it</span></td></tr><tr><td class="bar-num">46</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">47</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Hey</span></td></tr><tr><td class="bar-num">48</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">go</span></td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 49-64</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">49</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">50</td><td class="beat-start"><span class="syllable " style="color:#aaa">What'</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">the</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">51</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">give</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">back</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#E91E6333;color:#E91E63">for</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">52</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">nigga</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">is</span></td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">53</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">TBD</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">look</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">at</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">54</td><td class="beat-start"><span class="syllable " style="color:#aaa">this</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">shit</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">55</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">like</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">BTC</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">56</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">could</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">be</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">done</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">57</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">this</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">week</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">And</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">58</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I'm</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">up</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">next</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">59</td><td class="beat-start"><span class="syllable " style="color:#aaa">week</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">don't</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">give</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">fuck</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">if</span></td></tr><tr><td class="bar-num">60</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">you</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">love</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">61</td><td class="beat-start"><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=""><span class="syllable " style="color:#aaa">don't</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#96CEB433;color:#96CEB4">give</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">62</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">fuck</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">if</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">63</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">you</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">64</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">like</span></td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Asked</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">me</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">how</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 65-80</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">65</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">it</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">feel</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">66</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">Can't</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#F39C1233;color:#F39C12">say</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#E74C3C33;color:#E74C3C">it</span></td><td class=""><span class="syllable " style="color:#aaa">didn'</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">surpr</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">67</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">me</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">out</span></td><td class="beat-start"><span class="syllable " style="background:#96CEB433;color:#96CEB4">two</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">tones</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">68</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#F1C40F33;color:#F1C40F">And</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">nobod</span></td><td class=""><span class="syllable " style="color:#aaa">have</span></td><td class=""><span class="syllable " style="color:#aaa">my</span></td><td class=""><span class="syllable " style="color:#aaa">cares</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">until</span></td></tr><tr><td class="bar-num">69</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">they'</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">front</span></td><td class=""><span class="syllable " style="color:#aaa">of</span></td><td class=""><span class="syllable doubled" style="color:#aaa">you</span></td><td class=""><span class="syllable doubled" style="background:#96CEB433;color:#96CEB4">to</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">most</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">at</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">Y</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">my</span></td></tr><tr><td class="bar-num">70</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">right</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">You</span></td><td class=""><span class="syllable doubled" style="color:#aaa">been</span></td><td class=""><span class="syllable " style="color:#aaa">on</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#3498DB33;color:#3498DB">that</span></td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">type</span></td><td class=""><span class="syllable " style="color:#aaa">of</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#E74C3C33;color:#E74C3C">time</span></td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class=""><span class="syllable " style="color:#aaa">stand</span></td><td class=""><span class="syllable " style="color:#aaa">Patun</span></td></tr><tr><td class="bar-num">71</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">Oh</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">ice</span></td><td class=""><span class="syllable " style="color:#aaa">besid</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#45B7D133;color:#45B7D1">man</span></td><td class=""><span class="syllable " style="color:#aaa">tiffi</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Hacki</span></td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class=""><span class="syllable " style="color:#aaa">some</span></td></tr><tr><td class="bar-num">72</td><td class="beat-start"><span class="syllable " style="background:#FF6B6B33;color:#FF6B6B">stone</span></td><td class=""><span class="syllable " style="color:#aaa">peopl</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">out</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">of</span></td><td class=""><span class="syllable " style="color:#aaa">plent</span></td><td class=""><span class="syllable " style="background:#45B7D133;color:#45B7D1">Hang</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">shit</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">right</span></td><td class=""><span class="syllable " style="color:#aaa">aroun</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">at</span></td><td class=""><span class="syllable " style="color:#aaa">a</span></td><td class=""><span class="syllable " style="background:#96CEB433;color:#96CEB4">two</span></td><td class=""><span class="syllable " style="color:#aaa">procy</span></td></tr><tr><td class="bar-num">73</td><td class="beat-start"><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">row</span></td><td class=""><span class="syllable " style="color:#aaa">shit</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#96CEB433;color:#96CEB4">who</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="background:#FFEAA733;color:#FFEAA7">go</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">74</td><td class="beat-start"><span class="syllable " style="background:#9B59B633;color:#9B59B6">me</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">go</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td></tr><tr><td class="bar-num">75</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">Hey</span></td></tr><tr><td class="bar-num">76</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">77</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">go</span></td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable doubled" style="background:#FFEAA733;color:#FFEAA7">go</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="background:#F39C1233;color:#F39C12">Yeah</span></td></tr><tr><td class="bar-num">78</td><td class="beat-start"><span class="syllable doubled" style="color:#aaa">I</span></td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="background:#F39C1233;color:#F39C12">yeah</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">miss</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">did</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">79</td><td class="beat-start"><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class="beat-start"><span class="syllable " style="background:#F39C1233;color:#F39C12">Yeah</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable doubled" style="color:#aaa">let's</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">Let's</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">go</span></td></tr><tr><td class="bar-num">80</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#2ECC7133;color:#2ECC71">Let's</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class=""><span class="syllable doubled" style="background:#DDA0DD33;color:#DDA0DD">go</span></td><td class=""><span class="syllable doubled" style="background:#DDA0DD33;color:#DDA0DD">go</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">Hey</span></td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">hey</span></td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 81-96</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">81</td><td class="beat-start"><span class="syllable " style="color:#aaa">I</span></td><td class=""><span class="syllable " style="color:#aaa">miss</span></td><td class=""><span class="syllable " style="color:#aaa">let's</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">When</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">go</span></td><td class=""><span class="syllable " style="color:#aaa">I</span></td></tr><tr><td class="bar-num">82</td><td class="beat-start"><span class="syllable " style="color:#aaa">was</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">looki</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">at</span></td><td class=""><span class="syllable " style="color:#aaa">child</span></td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">hey</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">and</span></td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">cooki</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">with</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">child</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">and</span></td></tr><tr><td class="bar-num">83</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">givin</span></td><td class=""><span class="syllable " style="color:#aaa">get</span></td><td class=""><span class="syllable " style="color:#aaa">our</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">punch</span></td><td class=""><span class="syllable " style="color:#aaa">verse</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">and</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">the</span></td><td class=""><span class="syllable " style="color:#aaa">book</span></td><td class=""><span class="syllable " style="color:#aaa">as</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">some</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">makin</span></td></tr><tr><td class="bar-num">84</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">TSC</span></td><td class=""><span class="syllable " style="color:#aaa">sure</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#3498DB33;color:#3498DB">why</span></td><td class=""><span class="syllable " style="background:#E74C3C33;color:#E74C3C">shit</span></td><td class=""><span class="syllable doubled" style="color:#aaa">I</span></td><td class=""><span class="syllable " style="color:#aaa">was</span></td><td class="beat-start"><span class="syllable " style="background:#E74C3C33;color:#E74C3C">hit</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#45B7D133;color:#45B7D1">man</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">the</span></td><td class=""><span class="syllable " style="color:#aaa">I</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">85</td><td class="beat-start"><span class="syllable " style="color:#aaa">miss</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#3498DB33;color:#3498DB">guy</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">some</span></td><td class=""><span class="syllable " style="color:#aaa">was</span></td><td class=""><span class="syllable " style="color:#aaa">TSC</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">86</td><td class="beat-start"><span class="syllable " style="background:#E91E6333;color:#E91E63">all</span></td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class=""><span class="syllable " style="color:#aaa">my</span></td><td class=""><span class="syllable " style="background:#2ECC7133;color:#2ECC71">crib</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">looki</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">nigga</span></td><td class=""><span class="syllable " style="background:#3498DB33;color:#3498DB">at</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">holes</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">Where</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">87</td><td class="beat-start"><span class="syllable " style="background:#96CEB433;color:#96CEB4">you</span></td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">if</span></td><td class=""><span class="syllable " style="color:#aaa">gonna</span></td><td class=""><span class="syllable " style="color:#aaa">word</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#F1C40F33;color:#F1C40F">and</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#E91E6333;color:#E91E63">all</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#F39C1233;color:#F39C12">of</span></td><td class=""><span class="syllable " style="color:#aaa">shows</span></td><td class=""><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">a</span></td><td class="beat-start"><span class="syllable " style="background:#3498DB33;color:#3498DB">y</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#F1C40F33;color:#F1C40F">chill</span></td><td class=""><span class="syllable " style="background:#E91E6333;color:#E91E63">'all</span></td></tr><tr><td class="bar-num">88</td><td class="beat-start"><span class="syllable " style="color:#aaa">papy</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#00BCD433;color:#00BCD4">felt</span></td><td class=""><span class="syllable " style="background:#E91E6333;color:#E91E63">ol</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">like</span></td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">this</span></td><td class=""><span class="syllable " style="background:#3498DB33;color:#3498DB">eye</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">man</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#3498DB33;color:#3498DB">back</span></td><td class="beat-start"><span class="syllable doubled" style="color:#aaa">I</span></td><td class=""><span class="syllable " style="background:#DDA0DD33;color:#DDA0DD">miss</span></td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">89</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">90</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">your</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">91</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#F1C40F33;color:#F1C40F">city</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">92</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">tonig</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">93</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">walki</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">aroun</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">94</td><td class="beat-start"><span class="syllable " style="background:#45B7D133;color:#45B7D1">my</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">head</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">high</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#45B7D133;color:#45B7D1">I</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#8BC34A33;color:#8BC34A">saw</span></td></tr><tr><td class="bar-num">95</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#8BC34A33;color:#8BC34A">bro</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">in</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FFEAA733;color:#FFEAA7">the</span></td><td class=""><span class="syllable " style="color:#aaa">pop</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">96</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">out</span></td><td class=""><span class="syllable " style="background:#96CEB433;color:#96CEB4">with</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#FF980033;color:#FF9800">them</span></td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">But</span></td><td class=" rest">·</td></tr></table></div>
+    <div class="flow-container">
+        <div class="section-header">Bars 97-100</div>
+        <table>
+            <tr>
+                <th>Bar</th>
+<th class="beat-start">1</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">2</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">3</th><th class="">e</th><th class="">&</th><th class="">a</th><th class="beat-start">4</th><th class="">e</th><th class="">&</th><th class="">a</th></tr><tr><td class="bar-num">97</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#FF980033;color:#FF9800">then</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">get</span></td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">right</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">again</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">his</span></td><td class=" rest">·</td></tr><tr><td class="bar-num">98</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">hand</span></td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">line</span></td><td class=""><span class="syllable " style="color:#aaa">It</span></td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">feels</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="background:#4ECDC433;color:#4ECDC4">like</span></td></tr><tr><td class="bar-num">99</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">nobod</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="color:#aaa">dead</span></td><td class=" rest">·</td><td class=""><span class="syllable " style="color:#aaa">They</span></td><td class="beat-start"><span class="syllable " style="color:#aaa">start</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr><tr><td class="bar-num">100</td><td class="beat-start rest">·</td><td class=""><span class="syllable " style="background:#96CEB433;color:#96CEB4">You</span></td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start"><span class="syllable " style="color:#aaa">givin</span></td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class="beat-start rest">·</td><td class=" rest">·</td><td class=" rest">·</td><td class=" rest">·</td></tr></table></div>
+    <div class="legend">
+        <div class="legend-title">Rhyme Groups</div>
+        <div class="legend-grid">
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#FF6B6B"></div>
+                <div class="legend-text"><span class="legend-letter">A:</span> Let's, better</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#4ECDC4"></div>
+                <div class="legend-text"><span class="legend-letter">B:</span> right, like, type</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#45B7D1"></div>
+                <div class="legend-text"><span class="legend-letter">C:</span> Hang, man</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#96CEB4"></div>
+                <div class="legend-text"><span class="legend-letter">D:</span> who, you, two, to</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#FFEAA7"></div>
+                <div class="legend-text"><span class="legend-letter">E:</span> go, Oh, row</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#DDA0DD"></div>
+                <div class="legend-text"><span class="legend-letter">F:</span> no, go, yaw</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#F39C12"></div>
+                <div class="legend-text"><span class="legend-letter">G:</span> say, Hey, Yeah</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#9B59B6"></div>
+                <div class="legend-text"><span class="legend-letter">H:</span> niggas, cuz</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#E74C3C"></div>
+                <div class="legend-text"><span class="legend-letter">I:</span> it, shit, hit</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#3498DB"></div>
+                <div class="legend-text"><span class="legend-letter">J:</span> guy, eye, why, y</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#2ECC71"></div>
+                <div class="legend-text"><span class="legend-letter">K:</span> need, did, crib</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#F1C40F"></div>
+                <div class="legend-text"><span class="legend-letter">L:</span> chilly, city</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#E91E63"></div>
+                <div class="legend-text"><span class="legend-letter">M:</span> for, ol, all</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#00BCD4"></div>
+                <div class="legend-text"><span class="legend-letter">N:</span> left, felt</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#8BC34A"></div>
+                <div class="legend-text"><span class="legend-letter">O:</span> saw, bro</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#FF9800"></div>
+                <div class="legend-text"><span class="legend-letter">P:</span> them, then</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#FF6B6B"></div>
+                <div class="legend-text"><span class="legend-letter">Q:</span> tones, most, don't, stones</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#4ECDC4"></div>
+                <div class="legend-text"><span class="legend-letter">R:</span> looking, cooking</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#45B7D1"></div>
+                <div class="legend-text"><span class="legend-letter">S:</span> my, I</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#96CEB4"></div>
+                <div class="legend-text"><span class="legend-letter">T:</span> give, with</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#FFEAA7"></div>
+                <div class="legend-text"><span class="legend-letter">U:</span> a, the</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#DDA0DD"></div>
+                <div class="legend-text"><span class="legend-letter">V:</span> if, this, miss</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#F39C12"></div>
+                <div class="legend-text"><span class="legend-letter">W:</span> love, of</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#9B59B6"></div>
+                <div class="legend-text"><span class="legend-letter">X:</span> me</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#E74C3C"></div>
+                <div class="legend-text"><span class="legend-letter">Y:</span> I'm, time</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#3498DB"></div>
+                <div class="legend-text"><span class="legend-letter">Z:</span> back, that, at</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#2ECC71"></div>
+                <div class="legend-text"><span class="legend-letter">A:</span> let's</div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background:#F1C40F"></div>
+                <div class="legend-text"><span class="legend-letter">B:</span> And</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="metrics">
+        <div class="metric-card">
+            <div class="metric-title">Flow Analysis</div>
+            <div class="metric-row"><span class="metric-label">Grid Type</span><span class="metric-value">NOCTUPLET</span></div>
+            <div class="metric-row"><span class="metric-label">Microtiming Style</span><span class="metric-value">on-beat</span></div>
+            <div class="metric-row"><span class="metric-label">Mean Deviation</span><span class="metric-value">1.2ms</span></div>
+            <div class="metric-row"><span class="metric-label">Rhyme Density</span><span class="metric-value">1.10/bar</span></div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Melodicity</div>
+            <div class="metric-row"><span class="metric-label">Overall Score</span><span class="metric-value">0.23</span></div>
+            <div class="metric-row"><span class="metric-label">Vocal Style</span><span class="metric-value">rap</span></div>
+            <div class="metric-row"><span class="metric-label">Sung Ratio</span><span class="metric-value">24%</span></div>
+            <div class="metric-row"><span class="metric-label">Mean Pitch</span><span class="metric-value">218Hz</span></div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Vocal Doubles</div>
+            <div class="metric-row"><span class="metric-label">Total Doubled</span><span class="metric-value">41</span></div>
+            <div class="metric-row"><span class="metric-label">Clean Doubles</span><span class="metric-value">41</span></div>
+            <div class="metric-row"><span class="metric-label">Percentage</span><span class="metric-value">9.1%</span></div>
+            <div class="metric-row"><span class="metric-label">Beat Vocals Filtered</span><span class="metric-value">281</span></div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Production</div>
+            <div class="metric-row"><span class="metric-label">Reverb Style</span><span class="metric-value">room</span></div>
+            <div class="metric-row"><span class="metric-label">Reverb Amount</span><span class="metric-value">0.24</span></div>
+            <div class="metric-row"><span class="metric-label">Adlibs Total</span><span class="metric-value">12</span></div>
+            <div class="metric-row"><span class="metric-label">Adlibs/Bar</span><span class="metric-value">0.12</span></div>
+        </div>
+    </div>
+    
+    <div style="text-align:center;margin-top:40px;padding:20px;color:#555;font-size:12px;">
+        Generated by Rap Notation Analysis System<br>
+        Based on Martin Connor's thesis work on rap notation systems
+    </div>
+</body>
+</html>

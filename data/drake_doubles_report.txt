@@ -1,0 +1,121 @@
+======================================================================
+VOCAL DOUBLES VERIFICATION REPORT
+======================================================================
+Audio: data/drake_what_did_i_miss.mp3
+Total doubles: 98
+Doubled time: 25.0s (12.9%)
+
+TIMESTAMPS TO CHECK (sorted by confidence):
+----------------------------------------------------------------------
+#    Time         Conf   Width  dB     Type         Words
+----------------------------------------------------------------------
+1    0:42.45      0.93   0.76   -0.2  stack        -
+2    0:43.44      0.89   0.73   -0.3  stack        -
+3    1:01.65      0.85   0.39   +4.3  unknown      -
+4    0:57.79      0.85   0.63   +0.8  stack        -
+5    0:55.43      0.79   0.40   +3.5  unknown      -
+6    0:58.58      0.74   0.88   -4.4  stack        -
+7    0:50.92      0.69   0.89   -5.1  stack        -
+8    0:54.73      0.69   0.85   -4.5  stack        -
+9    0:57.56      0.67   0.24   +4.4  unknown      -
+10   2:56.03      0.64   0.37   +2.1  unknown      -
+11   2:25.80      0.61   0.39   +1.5  whisper      -
+12   1:02.46      0.60   0.57   -1.4  whisper      -
+13   2:10.68      0.58   0.38   +1.2  whisper      -
+14   2:52.97      0.57   0.36   +1.5  whisper      -
+15   0:58.28      0.57   0.69   -3.6  stack        -
+16   0:54.45      0.55   0.91   -7.0  stack        -
+17   0:00.05      0.55   0.07   +5.6  full_double  -
+18   0:33.79      0.55   0.02   +6.3  full_double  -
+19   0:50.13      0.54   0.66   -3.3  stack        -
+20   1:35.23      0.54   0.02   +6.3  full_double  -
+21   1:15.56      0.54   0.03   +6.0  full_double  -
+22   1:27.54      0.54   0.02   +6.2  full_double  -
+23   0:26.87      0.54   0.05   +5.7  full_double  -
+24   0:03.04      0.53   0.01   +6.2  full_double  -
+25   0:14.12      0.53   0.03   +6.0  full_double  -
+26   1:23.24      0.53   0.03   +5.8  full_double  -
+27   0:46.28      0.53   0.53   -1.7  stack        -
+28   1:24.43      0.53   0.04   +5.6  full_double  -
+29   0:26.10      0.52   0.02   +6.0  full_double  -
+30   0:21.80      0.52   0.03   +5.8  full_double  -
+31   0:22.99      0.52   0.04   +5.6  full_double  -
+32   0:29.49      0.52   0.02   +5.9  full_double  -
+33   1:30.93      0.52   0.02   +5.9  full_double  -
+34   1:32.09      0.52   0.04   +5.6  full_double  -
+35   0:30.65      0.51   0.04   +5.6  full_double  -
+36   0:25.63      0.51   0.02   +5.8  full_double  -
+37   0:02.60      0.51   0.01   +5.9  full_double  -
+38   1:27.07      0.51   0.02   +5.7  full_double  -
+39   0:19.18      0.50   0.02   +5.7  full_double  -
+40   0:01.93      0.49   0.04   +5.3  full_double  -
+41   1:20.60      0.49   0.03   +5.5  full_double  -
+42   1:34.76      0.49   0.01   +5.7  full_double  -
+43   0:53.96      0.49   0.50   -1.7  stack        -
+44   0:15.30      0.49   0.00   +5.8  full_double  -
+45   2:55.33      0.49   0.38   +0.2  whisper      -
+46   0:33.32      0.48   0.01   +5.6  full_double  -
+47   1:16.74      0.48   0.01   +5.7  full_double  -
+48   0:30.21      0.47   0.02   +5.3  full_double  -
+49   1:31.65      0.47   0.02   +5.4  full_double  -
+50   0:18.41      0.47   0.01   +5.6  full_double  -
+51   1:19.85      0.47   0.01   +5.6  full_double  -
+52   1:16.28      0.47   0.01   +5.5  full_double  -
+53   0:14.84      0.47   0.01   +5.5  full_double  -
+54   1:19.41      0.46   0.00   +5.5  full_double  -
+55   0:11.47      0.46   0.01   +5.4  full_double  -
+56   0:17.97      0.46   0.00   +5.5  full_double  -
+57   0:22.55      0.46   0.02   +5.2  full_double  -
+58   1:12.91      0.45   0.01   +5.3  full_double  -
+59   2:53.45      0.43   0.81   -7.0  stack        -
+60   1:45.42      0.41   0.81   -7.1  stack        -
+61   2:23.22      0.41   0.79   -7.0  stack        -
+62   0:17.28      0.41   0.00   +4.8  full_double  -
+63   1:18.72      0.40   0.00   +4.8  full_double  -
+64   2:54.92      0.38   0.93   -9.4  stack        -
+65   2:58.40      0.35   0.44   -2.5  stack        -
+66   3:01.46      0.34   0.55   -4.1  stack        -
+67   1:59.10      0.31   0.74   -7.4  stack        -
+68   2:01.18      0.28   0.71   -7.3  stack        -
+69   1:38.01      0.27   0.75   -8.1  stack        -
+70   3:09.36      0.26   0.76   -8.2  stack        -
+71   1:43.89      0.24   0.74   -8.2  stack        -
+72   3:13.03      0.23   0.79   -9.0  stack        -
+73   1:51.29      0.23   0.66   -7.2  stack        -
+74   3:08.82      0.20   0.72   -8.5  stack        -
+75   2:53.22      0.19   0.75   -9.0  stack        -
+76   1:38.31      0.18   0.49   -5.2  stack        -
+77   2:56.75      0.18   0.60   -6.9  stack        -
+78   2:22.99      0.17   0.74   -9.0  stack        -
+79   2:26.98      0.16   0.65   -7.9  stack        -
+80   1:50.06      0.16   0.61   -7.3  stack        -
+81   3:06.97      0.15   0.86   -11.1  stack        -
+82   3:02.46      0.15   0.79   -10.0  stack        -
+83   1:47.53      0.14   0.77   -9.8  stack        -
+84   1:36.20      0.14   0.67   -8.4  stack        -
+85   2:58.77      0.13   0.75   -9.7  stack        -
+86   1:49.18      0.12   0.62   -7.9  stack        -
+87   2:45.00      0.11   0.63   -8.1  delay_effect -
+88   3:07.27      0.09   0.83   -11.3  stack        -
+89   3:05.27      0.08   0.64   -8.5  stack        -
+90   2:26.77      0.05   0.63   -8.9  stack        -
+91   2:35.30      -0.13   0.64   -11.1  stack        -
+92   3:05.50      -0.15   0.62   -11.1  stack        -
+93   3:11.01      -0.20   0.70   -12.9  stack        -
+94   3:12.05      -0.34   0.75   -15.4  stack        -
+95   1:10.47      -0.37   0.63   -13.9  stack        -
+96   0:09.03      -0.40   0.65   -14.6  stack        -
+97   1:06.66      -0.41   0.62   -14.2  stack        -
+98   0:05.22      -0.48   0.61   -14.8  stack        -
+
+HOW TO VERIFY:
+1. Open the audio file in any player (VLC, Audacity, etc.)
+2. Seek to each timestamp
+3. Listen for: wider stereo field, thicker sound, louder emphasis
+4. Compare to surrounding 'single' vocals
+
+WHAT DOUBLED VOCALS SOUND LIKE:
+- Fuller/thicker than single voice
+- Often panned left AND right (sounds wide)
+- Slightly louder/more present
+- May have slight timing artifacts (flamming)

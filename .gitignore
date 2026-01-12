@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+
+# Audio files (large)
+*.mp3
+*.wav
+*.flac
+*.m4a
+data/*.wav
+data/*.mp3
+data/stems/
+data/clean_doubles/
+data/word_doubles/
+data/midside_beat_vocals/
+
+# Model files
+*.pt
+*.pth
+*.bin
+*.onnx
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Analysis outputs (keep structure, ignore large files)
+*_analysis.json
+
+# Temp
+tmp/
+temp/
+*.tmp
+data/MCFlow/
