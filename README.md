@@ -299,6 +299,71 @@ rap-notation/
 | Reverb-aware processing | ✅ | ❌ | ❌ | ❌ |
 | HTML visualization | ✅ | ❌ | ❌ | ❌ |
 
+## Known Limitations
+
+We believe in transparency. Here's what doesn't work perfectly:
+
+### Transcription (Whisper)
+- **Word-level only** - we estimate syllables, not perfect
+- **Struggles with**: mumble rap, heavy accents, regional slang
+- **Mishears lyrics** - especially made-up words, ad-libs, fast flows
+- **Merges/drops words** in very fast double-time sections
+
+### Syllable Alignment
+- Greedy onset alignment isn't always accurate
+- pyphen/CMU dict don't know rap slang ("skrrt" = how many syllables?)
+- Multi-syllabic words can split at wrong phoneme boundaries
+
+### Onset Detection
+- Still picks up bleed from the beat even after Demucs separation
+- Heavy reverb adaptation helps but isn't perfect
+- Very fast flows (Twista, Tech N9ne, choppers) can overwhelm it
+
+### Rhyme Detection
+- **CMU dictionary gaps** - missing tons of slang, made-up words, brand names
+- **G2P fallback guesses wrong** on creative spelling ("tha", "dat", "4eva", "2chainz")
+- **Slant rhyme thresholds are subjective** - what we call a rhyme might not match artist intent
+- **Regional pronunciation not modeled** - Houston vowels ≠ NY vowels ≠ UK vowels
+
+### Vocal Double Detection
+- **Mono tracks break it entirely** - Mid-Side requires stereo
+- Demucs artifacts still slip through sometimes
+- Can't detect doubles panned identically to main vocal (rare but happens)
+- Beat vocals with similar timbre to rapper can still confuse it
+
+### BPM/Beat Detection
+- librosa struggles with complex/irregular rhythms (jazz-rap, experimental)
+- **No tempo change handling** - songs that speed up/slow down mid-track
+- Half-time vs double-time feel is ambiguous without human context
+
+### Grid Alignment
+- 16th and noctuplet aren't the only feels - swing, triplets, polyrhythms exist
+- Some flows **intentionally** don't fit any grid (that's the style)
+- Quantization error doesn't tell you if timing is sloppy or intentional
+
+### Melodicity Scoring
+- PYIN pitch tracking fails on noisy/heavily reverbed audio
+- **Autotune and vocoder throw it off completely** (T-Pain, Travis Scott, etc.)
+- "Sung vs rapped" threshold is somewhat arbitrary
+
+### Adlib Detection
+- Vocabulary-based - **misses creative/new ad-libs**
+- Assumes standard stereo mixing conventions (ad-libs panned wide)
+- Center-panned ad-libs are invisible to the detector
+
+### General
+- **Tested on limited tracks** - parameters may not generalize to all subgenres
+- No emotional/energy analysis (delivery intensity, aggression, vulnerability)
+- **Doesn't know when "wrong" is intentional** - behind-the-beat swagger vs. sloppy timing
+- Regional pronunciation variants not modeled (different cities pronounce words differently)
+
+### What We're NOT Trying To Do
+- Replace human analysis - this is a tool to assist, not replace ears
+- Generate lyrics - analysis only (see our thoughts on why generation is problematic)
+- Judge quality - we measure, we don't rate
+
+---
+
 ## Based On
 
 - Martin Connor's PhD thesis on rap notation systems
